@@ -1,0 +1,366 @@
+/* Base Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ecf0f1;
+    --background-color: #1a1a1a;
+    --card-background: #2c2c2c;
+    --border-color: #444;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: var(--secondary-color);
+}
+
+.stream-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.status-offline, .status-live {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-offline {
+    background-color: var(--accent-color);
+}
+
+.status-live {
+    background-color: var(--success-color);
+    animation: pulse 1.5s infinite;
+}
+
+#viewer-count {
+    margin-left: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* Main Content Styles */
+main {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+    
+    .video-container {
+        flex: 2;
+    }
+    
+    .comments-section {
+        flex: 1;
+    }
+}
+
+/* Video Container Styles */
+.video-container {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#video-stream {
+    width: 100%;
+    height: 50vh;
+    background-color: #000;
+    object-fit: cover;
+}
+
+#stream-controls {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.control-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #2980b9;
+}
+
+.control-btn:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+}
+
+#start-stream {
+    background-color: var(--success-color);
+}
+
+#start-stream:hover {
+    background-color: #27ae60;
+}
+
+#stop-stream {
+    background-color: var(--accent-color);
+}
+
+#stop-stream:hover {
+    background-color: #c0392b;
+}
+
+.stream-info {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--border-color);
+}
+
+#stream-key {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Comments Section Styles */
+.comments-section {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-section h2 {
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comments-container {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+
+.comment {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.comment-user {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.comment-time {
+    color: #7f8c8d;
+}
+
+.comment-text {
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.comment-form {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+#username {
+    width: 30%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+}
+
+#comment-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+}
+
+#send-comment {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-comment:hover {
+    background-color: #2980b9;
+}
+
+/* Overlay Styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.overlay-content h2 {
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.overlay-content p, .overlay-content ol {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.overlay-content ol {
+    padding-left: 20px;
+}
+
+.overlay-content li {
+    margin-bottom: 10px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    #stream-controls {
+        flex-wrap: wrap;
+    }
+    
+    .comment-form {
+        flex-wrap: wrap;
+    }
+    
+    #username, #comment-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    #send-comment {
+        width: 100%;
+    }
+}

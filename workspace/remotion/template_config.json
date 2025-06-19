@@ -1,0 +1,15 @@
+{
+  "description": "This template is designed for creating video using remotion, a powerful tool for creating videos programmatically using React.  The template is intended for developers who want to create videos programmatically. ",
+  "required_fields": ["slides.md"],
+  "required_files": [
+    "README.md",
+    "src/Root.tsx",
+    "src/index.css",
+    "src/index.ts",
+    "src/HelloWorld.tsx"
+  ],
+  "lang": "typescript",
+  "framework": "remotion",
+  "name": "video",
+  "scene": "Personal Demonstration Template"
+}

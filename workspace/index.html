@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Online Teaching</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chalkboard-teacher"></i> Live Online Teaching</h1>
+            <div class="stream-status">
+                <span id="status-indicator" class="status-offline"></span>
+                <span id="status-text">Offline</span>
+                <span id="viewer-count"><i class="fas fa-users"></i> <span id="viewers">0</span> students</span>
+            </div>
+        </header>
+        
+        <main>
+            <section class="video-container">
+                <video id="video-stream" autoplay playsinline muted></video>
+                <div id="stream-controls">
+                    <button id="start-stream" class="control-btn"><i class="fas fa-play"></i> Start Class</button>
+                    <button id="stop-stream" class="control-btn" disabled><i class="fas fa-stop"></i> End Class</button>
+                    <button id="toggle-camera" class="control-btn"><i class="fas fa-camera-rotate"></i> Switch Camera</button>
+                    <button id="share-screen" class="control-btn"><i class="fas fa-desktop"></i> Share Screen</button>
+                    <button id="toggle-whiteboard" class="control-btn"><i class="fas fa-chalkboard"></i> Whiteboard</button>
+                </div>
+                <div class="stream-info">
+                    <p id="stream-key">Your Stream Key: <span id="key-display">Not Generated</span></p>
+                    <button id="generate-key" class="control-btn"><i class="fas fa-key"></i> Generate New Key</button>
+                </div>
+            </section>
+            
+            <section class="comments-section">
+                <h2><i class="fas fa-comments"></i> Live Comments</h2>
+                <div class="comments-container" id="comments-container">
+                    <!-- Comments will be added here dynamically -->
+                </div>
+                <div class="comment-form">
+                    <input type="text" id="username" placeholder="Your name" maxlength="20">
+                    <input type="text" id="comment-input" placeholder="Type your comment...">
+                    <button id="send-comment"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </section>
+        </main>
+        
+        <div class="overlay" id="permission-overlay">
+            <div class="overlay-content">
+                <h2>Camera Permission Required</h2>
+                <p>This application needs access to your camera to stream. Please grant permission when prompted.</p>
+                <button id="request-permission" class="control-btn">Grant Permission</button>
+            </div>
+        </div>
+
+        <div class="overlay" id="instructions-overlay">
+            <div class="overlay-content">
+                <h2>How to Use Live Stream</h2>
+                <ol>
+                    <li>Grant camera permission using the button below</li>
+                    <li>Click "Start Stream" to begin broadcasting</li>
+                    <li>Share your stream URL with viewers</li>
+                    <li>Interact with viewers through the comments section</li>
+                </ol>
+                <button id="close-instructions" class="control-btn">Got It!</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Live Stream App | <a href="#" id="show-instructions">How to Use</a></p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
